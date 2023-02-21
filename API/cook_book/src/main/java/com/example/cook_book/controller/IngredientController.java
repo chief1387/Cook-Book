@@ -16,19 +16,19 @@ public class IngredientController {
     }
 
     @GetMapping
-    private List<IngredientDto> getIngredients() {
+    public List<IngredientDto> getIngredients() {
         return ingredientService.getIngredients();
     }
     @GetMapping("{id}")
-    private IngredientDto getIngredientById(@RequestParam long id) {
+    public IngredientDto getIngredientById(@PathVariable long id) {
         return ingredientService.getIngredientById(id);
     }
     @PostMapping
-    private IngredientDto addIngredient(@RequestBody IngredientDto ingredientDto) {
+    public IngredientDto addIngredient(@RequestBody IngredientDto ingredientDto) {
         return ingredientService.addIngredient(ingredientDto);
     }
     @DeleteMapping("{id}")
-    private String removeIngredient(@RequestParam long id) {
+    public String removeIngredient(@PathVariable long id) {
         return ingredientService.removeIngredient(id);
     }
 }

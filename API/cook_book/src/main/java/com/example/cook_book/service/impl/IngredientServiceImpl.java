@@ -17,6 +17,14 @@ public class IngredientServiceImpl implements IngredientService {
     private IngredientRepository ingredientRepository;
     private ModelMapper mapper;
 
+    public ModelMapper getMapper() {
+        return mapper;
+    }
+
+    public void setMapper(ModelMapper mapper) {
+        this.mapper = mapper;
+    }
+
     public IngredientServiceImpl(IngredientRepository ingredientRepository, ModelMapper mapper) {
         this.ingredientRepository = ingredientRepository;
         this.mapper = mapper;

@@ -7,11 +7,12 @@ import com.example.cook_book.payload.IngredientDto;
 import com.example.cook_book.repository.IngredientRepository;
 import com.example.cook_book.service.IngredientService;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Service
 public class IngredientServiceImpl implements IngredientService {
     private IngredientRepository ingredientRepository;
     private ModelMapper mapper;

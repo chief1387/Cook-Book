@@ -9,4 +9,5 @@ public interface IngredientService {
     IngredientDto getIngredientById(long id);
     List<IngredientDto> getIngredients();
     String removeIngredient(long id);
+    IngredientDto updateIngredient(IngredientDto ingredientDto, long id);
 }

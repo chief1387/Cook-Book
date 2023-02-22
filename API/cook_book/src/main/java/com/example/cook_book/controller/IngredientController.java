@@ -31,4 +31,8 @@ public class IngredientController {
     public String removeIngredient(@PathVariable long id) {
         return ingredientService.removeIngredient(id);
     }
+    @PutMapping("{id}")
+    public IngredientDto setIngredient(@PathVariable long id, @RequestBody IngredientDto newIngredient) {
+        return ingredientService.updateIngredient(newIngredient, id);
+    }
 }

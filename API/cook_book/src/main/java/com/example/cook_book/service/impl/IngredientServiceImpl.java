@@ -58,10 +58,24 @@ public class IngredientServiceImpl implements IngredientService {
     @Override
     public String removeIngredient(long id) {
         if (!ingredientExistsById(id)) {
-            return "Item you wanted to remove didn't exist";
+            throw new ResourceNotFoundException();
         }
         ingredientRepository.deleteById(id);
         return "successfully deleted ingredient with an id of " + id;
+    }
+
+    @Override
+    public IngredientDto updateIngredient(IngredientDto ingredientDto, long id) {
+        if (!ingredientExistsById(id)) {
+            throw new ResourceNotFoundException();
+        }
+        Ingredient newIngredient = ingredientRepository.getReferenceById(id);
+        if (ingredientDto.getName() != null) {
+            newIngredient.setName(ingredientDto.getName());
+        }
+
+        ingredientRepository.save(newIngredient);
+        return mapToDto(newIngredient);
     }
 
     private boolean ingredientExistsById(long id) {

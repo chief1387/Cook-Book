@@ -70,6 +70,7 @@ public class IngredientServiceImpl implements IngredientService {
             throw new ResourceNotFoundException();
         }
         Ingredient newIngredient = ingredientRepository.getReferenceById(id);
+
         if (ingredientDto.getName() != null) {
             newIngredient.setName(ingredientDto.getName());
         }

@@ -2,7 +2,6 @@ package com.example.cook_book.service.impl;
 
 import com.example.cook_book.entity.Ingredient;
 import com.example.cook_book.entity.Recipe;
-import com.example.cook_book.exception.ResourceAlreadyExistsException;
 import com.example.cook_book.exception.ResourceNotFoundException;
 import com.example.cook_book.payload.IngredientDto;
 import com.example.cook_book.payload.RecipeDto;
@@ -28,9 +27,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public RecipeDto addRecipe(RecipeDto recipeDto) {
-        if (repository.existsById(recipeDto.getId())) {
-            throw new ResourceAlreadyExistsException();
-        }
+
         repository.save(mapToEntity(recipeDto));
         return recipeDto;
     }

@@ -1,0 +1,36 @@
+.recipe {
+  display: flex;
+  background-color: rgb(128, 128, 128, 0.4);
+  border-radius: 10px;
+  margin: 2rem;
+  font-size: 20px;
+  min-height: 4rem;
+  align-items: center;
+  padding: 2rem;
+  flex-direction: column;
+  width: fit-content;
+  //   justify-content: space-between;
+  color: white;
+
+  transition: all 100ms ease-out;
+
+  box-shadow: rgb(255, 0, 255, 0.8) 5px 5px 2px;
+  &:hover {
+    transform: translateX(-5px) translateY(-5px);
+    box-shadow: rgb(255, 0, 255, 0.8) 10px 10px 2px;
+    opacity: 1;
+  }
+  opacity: 0.8;
+  border: grey 1px solid;
+  .id {
+    color: black;
+    text-align: left;
+  }
+  .prepTime {
+    color: grey;
+  }
+  .name {
+    font-size: 25px;
+    color: orange;
+  }
+}

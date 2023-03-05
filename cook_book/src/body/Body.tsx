@@ -8,7 +8,7 @@ const Body = () => {
     <div className="body">
       <Routes>
         <Route path="" element={<Home />} />
-        <Route path="recipes/view/{id}" element={<RecipeDetail />} />
+        <Route path="recipes/view/:id" element={<RecipeDetail />} />
         <Route path="recipes" element={<Recipes />} />
       </Routes>
     </div>

@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
+import { Exception } from "sass";
 import { Ingredient } from "../../Ingredient";
 import { Recipe } from "../../Recipe";
+import { RecipeService } from "../../service/RecipeService";
 import IngredientEl from "./Ingredient";
 import "./RecipeDetail.scss";
 
@@ -12,13 +14,11 @@ function RecipeDetail() {
     recipeId = Number.parseInt(id);
   }
   //  generate Recipe using id
-  const recipe = new Recipe(
-    recipeId,
-    "Example Recipe",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo iste debitis ratione doloremque perspiciatis pariatur similique, fugiat ad ab tempore voluptatibus impedit repellat aut, a qui excepturi atque, obcaecati perferendis.Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo iste debitis ratione doloremque perspiciatis pariatur similique, fugiat ad ab tempore voluptatibus impedit repellat aut, a qui excepturi atque, obcaecati perferendis.Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo iste debitis ratione doloremque perspiciatis pariatur similique, fugiat ad ab tempore voluptatibus impedit repellat aut, a qui excepturi atque, obcaecati perferendis.",
-    "12 min",
-    [new Ingredient(1, "Example Ingredient")]
-  );
+  const recipe: Recipe | null =
+    RecipeService.getInstance().getRecipeById(recipeId);
+  if (recipe == null) {
+    return <h3>Error Fetching Recipe With An ID of {recipeId}</h3>;
+  }
   return (
     <div className="recipeDetail row">
       <div className="heading">
@@ -35,11 +35,14 @@ function RecipeDetail() {
           </b>
         </h3>
       </div>
-      <div className="ingredients">
+      <h2>Ingredients required:</h2>
+      <ul className="ingredients">
         {recipe.ingredients.map((i) => (
-          <IngredientEl id={i.id} name={i.name} />
+          <li key={i.id}>
+            <IngredientEl id={i.id} name={i.name} />
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

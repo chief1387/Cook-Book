@@ -1,5 +1,6 @@
 function IngredientEl(props: any) {
-  return <div className="ingredinet">INGREDIENT</div>;
+  const name = props.name;
+  return <div className="ingredinet">{name}</div>;
 }
 
 export default IngredientEl;
